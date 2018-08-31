@@ -18,7 +18,6 @@
     jQuery(document).ready(function() {
         var cc = "${pageContext.request.contextPath}";
        App.init(cc);
-       $(".profit").click();
     });
 </script>
 <body>
@@ -29,6 +28,38 @@
         <li class="active li-nav profit"><a href="javascript:void(0)">利润</a></li>
         <li class="li-nav costManager"><a href="javascript:void(0)">成本管理</a></li>
     </ul>
+    <div class="row" >
+        <div class="col-md-6 col-md-offset-3"
+             style="padding:5px;">
+            <table class="table table-striped">
+                <caption>条纹表格布局</caption>
+                <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>城市</th>
+                    <th>邮编</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Tanmay</td>
+                    <td>Bangalore</td>
+                    <td>560001</td>
+                </tr>
+                <tr>
+                    <td>Sachin</td>
+                    <td>Mumbai</td>
+                    <td>400003</td>
+                </tr>
+                <tr>
+                    <td>Uma</td>
+                    <td>Pune</td>
+                    <td>411027</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 </body>

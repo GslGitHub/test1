@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssmm.dao.CommodityMapper" >
+  <resultMap id="BaseResultMap" type="com.ssmm.model.ymxCommodity" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
+    <result column="commodity_sku" property="commoditySku" jdbcType="VARCHAR" />
+    <result column="commodity_weight" property="commodityWeight" jdbcType="DOUBLE" />
+    <result column="height" property="height" jdbcType="DOUBLE" />
+    <result column="length" property="length" jdbcType="DOUBLE" />
+    <result column="width" property="width" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, commodity_name, commodity_sku,height,length,width
+  </sql>
+  <select id="selectListBySku" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from book
+    where  commodity_sku = #{sku,jdbcType=VARCHER}
+  </select>
+
+  <insert id="insert" parameterType="com.ssmm.model.ymxCommodity" >
+    insert into ymx_commodity (id, commodity_name, commodity_sku,commodity_weight,height,length,width
+      )
+    values (#{id,jdbcType=VARCHAR}, #{commodityName,jdbcType=VARCHAR}, #{commoditySku,jdbcType=VARCHAR},
+    #{commodityWeight,jdbcType=DOUBLE},#{height,jdbcType=DOUBLE},#{length,jdbcType=DOUBLE},#{width,jdbcType=DOUBLE}
+      )
+  </insert>
+
+
+  <update id="updateByPrimaryKey" parameterType="com.ssmm.model.ymxCommodity" >
+    update ymx_commodity
+    set commodity_name = #{commodityName,jdbcType=VARCHAR},
+      commodity_sku = #{commoditySku,jdbcType=DECIMAL},
+      commodity_weight =#{commodityWeight,jdbcType=DOUBLE},
+      height = #{height,jdbcType=DOUBLE},
+      length = #{length,jdbcType=DOUBLE},
+      width = #{width,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

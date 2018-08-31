@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssmm.dao.CommodityOtherpayMapper" >
+  <resultMap id="BaseResultMap" type="com.ssmm.model.ymxCommodityOtherpay" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="commodity_id" property="commodityId" jdbcType="VARCHAR" />
+    <result column="sela_price" property="selaPrice" jdbcType="DOUBLE" />
+    <result column="commission" property="commission" jdbcType="DOUBLE" />
+    <result column="ad" property="ad" jdbcType="DOUBLE" />
+    <result column="service" property="service" jdbcType="DOUBLE" />
+    <result column="return_price" property="returnPrice" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, commodity_id, sela_price,commission,ad,service,return_price
+  </sql>
+  <select id="selectListBySku" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from book
+    where  commodity_sku = #{sku,jdbcType=VARCHER}
+  </select>
+
+  <insert id="insert" parameterType="com.ssmm.model.ymxCommodity" >
+    insert into ymx_commodity_otherpay (id, commodity_id, sela_price,commission,ad,service,return_price
+      )
+    values (#{id,jdbcType=VARCHAR}, #{commodityId,jdbcType=DOUBLE}, #{selaPrice,jdbcType=DOUBLE},
+    #{commission,jdbcType=DOUBLE},#{ad,jdbcType=DOUBLE},#{service,jdbcType=DOUBLE},#{returnPrice,jdbcType=DOUBLE}
+      )
+  </insert>
+
+
+  <update id="updateByPrimaryKey" parameterType="com.ssmm.model.ymxCommodity" >
+    update ymx_commodity_otherpay
+    set commodity_id = #{commodityId,jdbcType=VARCHAR},
+    sela_price = #{selaPrice,jdbcType=DOUBLE},
+    commission = #{commission,jdbcType=DOUBLE},
+    ad = #{ad,jdbcType=DOUBLE},
+    service = #{service,jdbcType=DOUBLE},
+    return_price = #{returnPrice,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssmm.dao.CommodityBatchMapper" >
+  <resultMap id="BaseResultMap" type="com.ssmm.model.ymxCommodityBatch" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="commodity_id" property="commodityId" jdbcType="VARCHAR" />
+    <result column="batch_price" property="batchPrice" jdbcType="DOUBLE" />
+    <result column="num" property="num" jdbcType="int" />
+    <result column="yunfei" property="yunfei" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, commodity_id, batch_price,num,yunfei
+  </sql>
+  <select id="getBatchs" resultMap="BaseResultMap" >
+    select 
+
+    from book
+
+  </select>
+
+  <insert id="insert" parameterType="com.ssmm.model.ymxCommodityBatch" >
+    insert into ymx_commodity_batch (id, commodity_id, batch_price,num,yunfei
+      )
+    values (#{id,jdbcType=VARCHAR}, #{commodityId,jdbcType=VARCHAR}, #{batchPrice,jdbcType=DOUBLE},
+    #{num,jdbcType=DOUBLE},#{yunfei,jdbcType=DOUBLE}
+      )
+  </insert>
+
+
+  <update id="updateByPrimaryKey" parameterType="com.ssmm.model.ymxCommodityBatch" >
+    update ymx_commodity_batch
+    set commodity_id = #{commodityId,jdbcType=VARCHAR},
+      batch_price = #{batchPrice,jdbcType=DOUBLE},
+      num = #{num,jdbcType=DOUBLE},
+      yunfei =#{yunfei,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
